@@ -15,7 +15,9 @@ A VAE learns a **compressed latent representation** $z$ of data $x$ by jointly t
 
 The model is trained by maximizing the **Evidence Lower Bound (ELBO)**:
 
-$$\mathcal{L}(\theta, \phi;\, x) = \mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)] - D_{KL}(q_\phi(z|x) \| p(z))$$
+$$
+\mathcal{L}(\theta, \phi;\, x) = \mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)] - D_{KL}(q_\phi(z|x) \| p(z))
+$$
 
 | Term | Role |
 |---|---|
@@ -57,7 +59,9 @@ Input x (784)
 
 Maps input $x$ to parameters of a Gaussian posterior:
 
-$$q_\phi(z|x) = \mathcal{N}\!\left(z;\, \mu_\phi(x),\, \text{diag}(\sigma_\phi^2(x))\right)$$
+$$
+q_\phi(z|x) = \mathcal{N}\!\left(z;\, \mu_\phi(x),\, \text{diag}(\sigma_\phi^2(x))\right)
+$$
 
 ```python
 self.encoder = nn.Sequential(
