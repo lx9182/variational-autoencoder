@@ -16,7 +16,7 @@ A VAE learns a **compressed latent representation** $z$ of data $x$ by jointly t
 The model is trained by maximizing the **Evidence Lower Bound (ELBO)**:
 
 $$
-\mathcal{L}(\theta, \phi;\, x) = \mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)] - D_{KL}(q_\phi(z|x) \| p(z))
+\mathcal{L}(\theta, \phi; x) = \mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)] - D_{KL}(q_\phi(z|x) \| p(z))
 $$
 
 | Term | Role |
@@ -60,7 +60,7 @@ Input x (784)
 Maps input $x$ to parameters of a Gaussian posterior:
 
 $$
-q_\phi(z|x) = \mathcal{N}\!\left(z;\, \mu_\phi(x),\, \text{diag}(\sigma_\phi^2(x))\right)
+q_\phi(z|x) = \mathcal{N}\left(z; \mu_\phi(x), \text{diag}(\sigma_\phi^2(x))\right)
 $$
 
 ```python
@@ -89,7 +89,7 @@ def reparameterize(self, mu, log_var):
 
 Reconstructs $x$ from $z$. Each pixel is modelled as an independent Bernoulli (pixels are near-binary after `ToTensor()`):
 
-$$p_\theta(x|z) = \prod_{i=1}^{784} \text{Bernoulli}(x_i;\, \hat{x}_i(z))$$
+$$p_\theta(x|z) = \prod_{i=1}^{784} \text{Bernoulli}(x_i; \hat{x}_i(z))$$
 
 ```python
 self.decoder = nn.Sequential(
